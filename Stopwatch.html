@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: black;
+            margin: 200px 0px 0px 500px;
+        }
+        #outline
+        {
+            border: 6px solid whitesmoke;
+            border-radius: 10px;
+            background-color: grey;
+            height: 350px;
+            width: 600px;
+            position: absolute;
+        }
+       
+        #one{
+            border: 5px solid whitesmoke;
+            border-radius: 100%;
+            background-color: maroon;
+            color: whitesmoke;
+            height: 200px;
+            width: 200px;
+            position: relative;
+            top: 5%;
+            left: 30%;
+        }
+         span{
+            position: relative;
+            color: white;
+            top: 20%;
+            left: 25%;
+         }
+         #inline
+         {
+            position: relative;
+            top: 15%;
+            display: flex;
+            justify-content: space-evenly;
+         }
+         #watch
+         {
+            position: relative;
+            top: 15%;
+            left: 20%;
+            font-size: x-large;
+         }
+         
+       
+         span
+         {
+            position: relative;
+            top: 20px;
+            left: 50px;
+            font-size: x-large;
+         }
+         button:hover
+         {
+            background-color: aquamarine;
+            border: 2px solid black;
+         }
+    </style>
+</head>
+<body>
+    <div id="outline">  
+        <div id="one">
+          <h3 id="watch">HH:MM:SS</h3>
+          <div id="time">
+            <span id="hour">00</span>
+            <span> : </span>
+            <span id="mins">00</span>
+            <span> : </span>
+            <span id="secs">00</span>
+          </div>
+          
+        </div>
+    <div id="inline">
+        <button id="start">START</button>
+        <button id="end">END</button>
+        <button id="reset">RESET</button>
+    </div>
+    </div>
+</body>
+</html>
+<script>
+    let seconds=0
+    let minutes=0
+    let hours=0
+    let start=document.querySelector("#start")
+    let reset=document.querySelector("#reset")
+    let hour=document.querySelector("#hour")
+    let mins=document.querySelector("#mins")
+    let secs=document.querySelector("#secs")
+    let interval = null;
+    start.addEventListener("click",()=>{
+        if(interval==null){
+       interval =setInterval(()=>{
+        seconds++
+        if(seconds === 60)
+        {
+            minutes++
+            seconds=0
+        }
+        if(minutes === 60)
+        {
+            hours++
+            minutes=0
+        }
+        secs.innerText=seconds <10 ? "0" + seconds : seconds
+        mins.innerText=minutes <10 ? "0" + minutes : minutes
+        hour.innerText=hours <10 ? "0" + hours : hours
+    },1000)
+}
+})
+end.addEventListener("click",()=>{
+    clearInterval(interval)
+    interval=null
+})
+reset.addEventListener("click",()=>{
+    if(interval===null)
+    {
+        seconds=0
+        minutes=0
+        hours=0
+        secs.innerText=seconds <10 ? "0" + seconds : seconds
+        mins.innerText=minutes <10 ? "0" + minutes : minutes
+        hour.innerText=hours <10 ? "0" + hours : hours
+    }
+})
+document.querySelector("#one")
+one.style.backgroundColor="darkslategrey"
+</script>
